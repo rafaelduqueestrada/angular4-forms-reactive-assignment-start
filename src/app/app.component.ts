@@ -11,11 +11,14 @@ export class AppComponent implements OnInit {
   status = ['Stable', 'Critical', 'Finished'];
   projectForm: FormGroup;
 
+  maskCep = [/\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/];
+
   ngOnInit() {
     this.projectForm = new FormGroup({
       'projectName': new FormControl(null, Validators.required, this.forbiddenProjectNames),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'status': new FormControl(null)
+      'status': new FormControl(null),
+      'cep' : new FormControl(null)
     });
   }
 
